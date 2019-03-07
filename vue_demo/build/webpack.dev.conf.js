@@ -8,6 +8,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const apiMocker = require('webpack-api-mocker');
 const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
@@ -22,6 +23,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
+    before(app) {
+      apiMocker(app, path.resolve('mock/api.js'));
+    },
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
