@@ -1,8 +1,13 @@
 <template>
-  <div class="album">
-    这是相册
-  </div>
+  <h1>{{title}}</h1>
 </template>
 
 <script>
+export default {
+  data () {
+    return {
+      title: '这是一些照片'
+    }
+  }
+}
 </script>
