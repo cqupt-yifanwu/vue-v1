@@ -3,7 +3,7 @@
     <div class="logo">这是logo但是我们没有logo</div>
     <nav>
       <div v-for="(item, index) in nav" :key="index">
-        <span :page="page">
+        <span>
           <router-link :to="item.link">{{item.name}} </router-link>
         </span>
       </div>
