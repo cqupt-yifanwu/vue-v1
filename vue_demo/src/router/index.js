@@ -5,21 +5,36 @@ import detail from '@/pages/detail'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'main',
-      components: () => import('@/pages/main')
+      component: () => import('@/pages/main'),
+      meta: {
+        module: 'main'
+      }
     },
     {
       path: '/album',
       name: 'album',
-      components: () => import('@/pages/album')
+      component: () => import('@/pages/album'),
+      meta: {
+        module: 'album'
+      }
     },
     {
       path: '/detail/:name',
       name: 'detail',
-      components: detail
+      component: detail,
+      meta: {
+        module: 'detail'
+      }
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../pages/about')
     }
   ]
 })
