@@ -1,11 +1,22 @@
 // 页面路由文件
 
 let Router = require('koa-router');
+let fs = require('fs');
+let path = require('path');
 
 const pages = new Router;
 
 pages.get('/', async(ctx) => {
-    ctx.body = '这里是模拟数据，到时候应该将vue产出入口放在这里'
+    const filePath = path.join(__dirname, '../../', 'dist', 'index.html');
+    
+    let data = fs.readFileSync(filePath);
+    if (!data) {
+        ctx.body = 404;
+        return;
+    }
+    ctx.type = 'text/html';
+    ctx.body = data.toString();
+
 });
 
 module.exports = pages;

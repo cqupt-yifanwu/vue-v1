@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "koa": "^2.7.0",
+    "koa-better-body": "^3.0.4",
     "koa-cors": "0.0.16",
     "koa-router": "^7.4.0",
     "less": "^3.9.0",
