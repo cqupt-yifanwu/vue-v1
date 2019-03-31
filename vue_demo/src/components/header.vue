@@ -8,10 +8,14 @@
         </span>
       </div>
     </nav>
+    <div class="login" @click="loginHandle">
+      {{loginText}}
+    </div>
   </header>
 </template>
 
 <script>
+import {mapState, mapActions} from 'vuex'
 export default {
   data () {
     return {
@@ -30,6 +34,36 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapState({
+      isLogin: state => state.isLogin,
+      loginText: (state) => {
+        if (state.isLogin) {
+          return '登出'
+        }
+        return '登录'
+      }
+    })
+  },
+  methods: {
+    loginHandle: () => {
+      setTimeout(() => {
+        console.log(this.isLogin)
+        if (this) {
+        } else {
+          //
+        }
+      }, 1000)
+    },
+    ...mapActions({
+      checkLogin: 'checkLogin',
+      login: 'login',
+      logout: 'logout'
+    })
+  },
+  mounted () {
+    this.checkLogin()
   }
 }
 </script>

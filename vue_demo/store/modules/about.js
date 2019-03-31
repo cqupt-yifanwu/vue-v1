@@ -1,4 +1,7 @@
 import axios from 'axios';
+import conf from '../../conf/config'
+
+const basePath = conf.endpoint;
 
 const state = ()=>({
     initdata: {}
@@ -13,7 +16,7 @@ const mutations = {
 
 const actions = {
     async readMock ({commit}) {
-        await axios.get('http://localhost:3000/getJson')
+        await axios.get(`${basePath}/getJson`)
             .then(res => {
                 commit('initPage', res)
             });

@@ -13,13 +13,15 @@ const bodyParser = require('koa-better-body');
 const app = new Koa();
 const router = new Router();
 
-app.use(bodyParser());
+// app.use(bodyParser());
 
 router.use('/',
-    pages.routes(),
     resource.routes(),
-    static.routes()
+    static.routes(),
+    pages.routes()
 )
+
+app.use(cors());
 
 // 将koa和两个中间件连起来
 app.use(router.routes());
