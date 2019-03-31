@@ -47,7 +47,7 @@ export default {
     })
   },
   methods: {
-    loginHandle: () => {
+    loginHandle() {
       setTimeout(() => {
         console.log(this.isLogin)
         if (this) {
